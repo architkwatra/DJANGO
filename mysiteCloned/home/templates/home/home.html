@@ -1,0 +1,12 @@
+<h1>Choose The Application you wish to go to</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url '' {choice.url}%}" method="post">
+{% csrf_token %}
+{% for choice in choices %}
+    <input type="radio" name="{{choice.app_choices}}" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.app_choices }}</label><br>
+{% endfor %}
+<input type="submit" value="GO">
+</form>
